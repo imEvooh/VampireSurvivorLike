@@ -121,6 +121,10 @@ _data = {
 }
 
 [node name="SmokeExplosion" type="Node2D"]
+modulate = Color(0.313726, 0.313726, 0.313726, 1)
+self_modulate = Color(0.219501, 0.219501, 0.219501, 1)
+light_mask = 3
+visibility_layer = 3
 z_index = 10
 script = ExtResource("1_kb8ql")
 
@@ -144,7 +148,7 @@ color = Color(0.568627, 0.568627, 0.568627, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
-autoplay = "RESET"
 libraries = {
 "": SubResource("AnimationLibrary_8msef")
 }
+autoplay = "RESET"

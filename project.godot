@@ -74,7 +74,7 @@ Settings/Show_Tooltips=true
 
 [application]
 
-config/name="Your First 2D Game With Godot 4: START (GDQuest)"
+config/name="VampireSurvivorLike"
 run/main_scene="res://vampiresurvivor_game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.png"
@@ -92,6 +92,12 @@ project/assembly_name="Getting started with Godot 4"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/colorpicker_presets/plugin.cfg")
+
+[importer_defaults]
+
+animation_library={
+"animation/fps": 60.0
+}
 
 [input]
 
