@@ -6,7 +6,7 @@ func _physics_process(_delta):
 	
 	%Pistol.flip_v = false if direction.x > 0.0 else true;
 	if ennemies_in_range.size() > 0:
-		var target : CharacterBody2D = ennemies_in_range.front();
+		var target = ennemies_in_range.front();
 		look_at(target.global_position);
 
 func shoot():
@@ -15,7 +15,6 @@ func shoot():
 	
 	new_bullet.global_transform = %ShootingPoint.global_transform;
 	%ShootingPoint.add_child(new_bullet);
-
 
 func _on_timer_timeout():
 	shoot();

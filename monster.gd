@@ -15,17 +15,25 @@ func _physics_process(_delta):
 	velocity = direction * 300;
 	move_and_slide();
 
-func display_smoke():
-	const SMOKE_EXPLOSION = preload("res://smoke_explosion/smoke_explosion.tscn")
-	var smoke = SMOKE_EXPLOSION.instantiate();
-	
-	get_parent().add_child(smoke);
-	smoke.global_position = global_position;
-
 func take_damage(damage):
 	health -= damage;
 	$ProgressBar.value = health;
 	$Slime.play_hurt();
 	if (health <= 0):
 		queue_free();
+		pop_exp();
 		display_smoke();
+
+func pop_exp():
+	const EXP_GEM = preload("res://experience_gem.tscn");
+	var gem = EXP_GEM.instantiate();
+	
+	get_parent().add_child(gem);
+	gem.global_position = global_position;
+
+func display_smoke():
+	const SMOKE_EXPLOSION = preload("res://smoke_explosion/smoke_explosion.tscn")
+	var smoke = SMOKE_EXPLOSION.instantiate();
+	
+	get_parent().add_child(smoke);
+	smoke.global_position = global_position;

@@ -23,7 +23,7 @@ texture = ExtResource("1_hgv2f")
 
 [node name="ShootingPoint" type="Marker2D" parent="Marker2D/Pistol"]
 unique_name_in_owner = true
-position = Vector2(26, -11)
+position = Vector2(26, -12)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

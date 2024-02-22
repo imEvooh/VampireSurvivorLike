@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp5h7os6or6xf"]
+[gd_scene load_steps=9 format=3 uid="uid://cp5h7os6or6xf"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_nefw5"]
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_y86pq"]
@@ -9,6 +9,12 @@ radius = 30.0167
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fspkn"]
 radius = 37.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aasrb"]
+radius = 510.025
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ay68w"]
+radius = 47.0956
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gp85h"]
 bg_color = Color(0.388235, 0.8, 0.372549, 1)
@@ -35,7 +41,24 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_fspkn")
 debug_color = Color(0.909804, 0.278431, 0.309804, 0.419608)
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="Grab" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grab"]
+position = Vector2(0, -33)
+shape = SubResource("CircleShape2D_aasrb")
+
+[node name="Collect" type="Area2D" parent="."]
+position = Vector2(1, -24)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collect"]
+position = Vector2(-2, -22)
+shape = SubResource("CircleShape2D_ay68w")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 offset_left = -97.0
 offset_top = -139.0
@@ -44,3 +67,18 @@ offset_bottom = -112.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_gp85h")
 value = 50.0
 show_percentage = false
+
+[node name="LevelText" type="LineEdit" parent="."]
+unique_name_in_owner = true
+offset_left = -179.0
+offset_top = -143.0
+offset_right = -97.0
+offset_bottom = -107.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Niv: 9"
+alignment = 1
+flat = true
+
+[connection signal="area_entered" from="Grab" to="." method="_on_grab_area_entered"]
+[connection signal="area_entered" from="Collect" to="." method="_on_collect_area_entered"]
