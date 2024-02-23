@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var health = 15;
+var health = 10;
 var player;
 
 func _ready():
@@ -28,7 +28,7 @@ func pop_exp():
 	const EXP_GEM = preload("res://experience_gem.tscn");
 	var gem = EXP_GEM.instantiate();
 	
-	get_parent().add_child(gem);
+	get_parent().call_deferred("add_child", gem);
 	gem.global_position = global_position;
 
 func display_smoke():
