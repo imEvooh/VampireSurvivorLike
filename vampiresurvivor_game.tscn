@@ -29,7 +29,6 @@ grow_vertical = 2
 
 [node name="Player" parent="." instance=ExtResource("1_ripik")]
 unique_name_in_owner = true
-position = Vector2(897, 484)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(56, 60)
@@ -130,7 +129,6 @@ anchor_bottom = 1.0
 offset_top = -61.0
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 41
 theme_override_styles/fill = SubResource("StyleBoxFlat_2b3bw")
 
