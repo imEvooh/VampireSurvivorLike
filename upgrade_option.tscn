@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4fqn57f8sx68"]
+
+[ext_resource type="Script" path="res://upgrade_option.gd" id="1_xb4uh"]
+[ext_resource type="Texture2D" uid="uid://c7ad3qwv8ob" path="res://assets/heart.png" id="2_2emnk"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(375, 90)
+anchors_preset = -1
+anchor_right = 0.195
+anchor_bottom = 0.083
+offset_right = 0.599976
+offset_bottom = 0.359993
+script = ExtResource("1_xb4uh")
+
+[node name="ItemOption" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -375.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.556863, 0.556863, 0.556863, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ItemOption"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 45.0
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+
+[node name="ItemIcon" type="TextureRect" parent="ItemOption/ColorRect"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 7.0
+offset_right = 36.0
+offset_bottom = 36.0
+texture = ExtResource("2_2emnk")
+expand_mode = 1
+
+[node name="LabelName" type="Label" parent="ItemOption"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 11.0
+offset_right = 207.0
+offset_bottom = 34.0
+text = "Name"
+
+[node name="LabelDescription" type="Label" parent="ItemOption"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 50.0
+offset_right = 183.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Description of upgrade"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

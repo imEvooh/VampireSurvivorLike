@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://r88vfr1kiyxo"]
+[gd_scene load_steps=7 format=3 uid="uid://r88vfr1kiyxo"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_1t5b5"]
 [ext_resource type="PackedScene" uid="uid://cp5h7os6or6xf" path="res://player.tscn" id="1_ripik"]
 [ext_resource type="PackedScene" uid="uid://ngavp3674ghw" path="res://pine_tree.tscn" id="2_6g1rs"]
+[ext_resource type="PackedScene" uid="uid://hgjlcf1i2u25" path="res://experience_gem.tscn" id="4_qjdd1"]
 
 [sub_resource type="Curve2D" id="Curve2D_qruna"]
 _data = {
@@ -17,17 +18,7 @@ bg_color = Color(0.343063, 0.705409, 0.328944, 1)
 y_sort_enabled = true
 script = ExtResource("1_1t5b5")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Player" parent="." instance=ExtResource("1_ripik")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_ripik")]
 unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -41,6 +32,16 @@ curve = SubResource("Curve2D_qruna")
 unique_name_in_owner = true
 position = Vector2(-198, -166)
 rotation = 0.000893655
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PineTree" parent="." instance=ExtResource("2_6g1rs")]
 position = Vector2(312, 438)
@@ -131,6 +132,14 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 41
 theme_override_styles/fill = SubResource("StyleBoxFlat_2b3bw")
+
+[node name="ExperienceGem" parent="." instance=ExtResource("4_qjdd1")]
+position = Vector2(808, 558)
+experience = 15
+
+[node name="ExperienceGem2" parent="." instance=ExtResource("4_qjdd1")]
+position = Vector2(156, 98)
+experience = 15
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="update_progress" from="Player" to="." method="_on_player_update_progress"]
