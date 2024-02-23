@@ -6,8 +6,18 @@ func _physics_process(_delta):
 	
 	%Pistol.flip_v = false if direction.x > 0.0 else true;
 	if ennemies_in_range.size() > 0:
-		var target = ennemies_in_range.front();
-		look_at(target.global_position);
+		var target = null
+		var closest_distance = $CollisionShape2D.shape.radius;
+
+		for enemy in ennemies_in_range:
+			var distance = global_position.distance_to(enemy.global_position);
+
+			if distance < closest_distance:
+				closest_distance = distance;
+				target = enemy;
+
+		if target:
+			look_at(target.global_position);
 
 func shoot():
 	const BULLET = preload("res://bullet.tscn");
